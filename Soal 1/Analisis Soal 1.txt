@@ -1,0 +1,30 @@
+Analisis Soal 1 – Sistem Sortir dan Pengiriman Paket
+
+1. Cara Kerja Program
+Pada program ini terdapat dua antrean, yaitu Queue A dan Queue B. Keduanya digunakan untuk mengatur paket yang masuk dan paket yang akan dikirim. 
+Program menggunakan konsep FIFO (First In First Out), jadi paket yang masuk lebih dulu akan diproses lebih dulu juga. 
+Misalnya, paket P17 masuk lebih dulu daripada P28. Maka saat paket diambil atau dikirim, P17 akan diproses lebih dulu.
+
+2. Proses pada Program
+Saat menggunakan perintah `MASUK`, paket akan ditambahkan ke bagian belakang Queue A. Perintah `PINDAH` digunakan untuk memindahkan paket dari Queue A ke Queue B. 
+Paket yang dipindahkan tetap mengikuti urutan antreannya. Pada proses ini, node tidak dibuat ulang, tetapi dipindahkan dengan mengatur pointer-nya. Perintah `KIRIM` digunakan untuk mengirim paket dari Queue B. 
+Setelah paket dikirim, node tersebut akan dihapus agar tidak lagi menggunakan memori. Selain itu, ada perintah `CARI` untuk mencari paket, `LIHAT` untuk melihat isi antrean, dan `REKAP` untuk melihat jumlah paket yang sudah dikirim beserta total beratnya. 
+Perintah `BERSIHKAN` digunakan untuk mengosongkan antrean, sedangkan `SELESAI` digunakan untuk mengakhiri program dan membebaskan node yang masih tersisa.
+
+3. Hasil Pengujian
+Dari pengujian yang sudah dilakukan, paket P17 dengan berat 450 gram, P28 dengan berat 700 gram, dan P36 dengan berat 550 gram berhasil dimasukkan ke Queue A.
+Setelah itu, dilakukan proses pemindahan paket dari Queue A ke Queue B menggunakan perintah `PINDAH`. Paket yang dipindahkan tetap berada dalam urutan FIFO.
+Saat dilakukan pengiriman menggunakan perintah `KIRIM`, paket berhasil dikirim sesuai urutannya. Ketika mencari P36, program juga berhasil menemukannya di Queue B pada posisi pertama dengan berat 550 gram.
+Program juga berhasil menolak perintah ketika jumlah paket yang ingin dipindahkan atau dikirim melebihi jumlah paket yang tersedia.
+Pada hasil rekap, tercatat ada 4 paket yang berhasil dikirim dengan total berat 2.300 gram. Setelah antrean dibersihkan menggunakan `BERSIHKAN`, statistik pengiriman tetap tersimpan. Artinya, mengosongkan antrean tidak menghapus data rekap pengiriman.
+
+4. Analisis Kompleksitas Waktu
+Untuk memasukkan satu paket ke antrean, prosesnya membutuhkan waktu O(1) karena node baru langsung ditambahkan ke bagian belakang antrean.
+Untuk mengambil atau mengirim satu paket, prosesnya juga membutuhkan waktu O(1) karena program hanya perlu mengubah pointer pada bagian depan antrean.
+Untuk memindahkan beberapa paket sebanyak k, prosesnya membutuhkan waktu O(k) karena setiap paket harus dipindahkan satu per satu.
+Sementara itu, proses pencarian membutuhkan waktu O(n) karena program harus memeriksa paket satu per satu sampai menemukan kode paket yang dicari.
+
+5. Kesimpulan
+Dari praktikum ini, saya memahami bahwa queue bisa digunakan untuk mengatur proses sortir dan pengiriman paket karena urutannya mengikuti FIFO.
+Penggunaan dua antrean membuat proses pemindahan dan pengiriman paket menjadi lebih teratur. Selain itu, penggunaan linked list dan pointer memungkinkan node dipindahkan tanpa harus membuat node baru.
+Program juga sudah bisa menangani kondisi ketika antrean kosong, menolak jumlah pemindahan atau pengiriman yang melebihi data tersedia, serta membebaskan memori ketika program selesai.

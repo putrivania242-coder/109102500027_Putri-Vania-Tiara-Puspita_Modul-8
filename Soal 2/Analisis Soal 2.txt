@@ -1,0 +1,28 @@
+Analisis Soal 2 – Buffer Pencatatan Hasil Ukur
+
+1. Cara Kerja Queue
+Pada soal ini, queue digunakan untuk menyimpan data hasil pengukuran. Cara kerjanya menggunakan FIFO (*First In First Out*), yaitu data yang masuk lebih dulu akan diambil lebih dulu juga.
+Di program ini, jumlah data yang bisa disimpan maksimal 6. Kalau sudah ada 6 data, kita tidak bisa menambahkan data lagi sebelum ada data yang diambil. Begitu juga kalau mau mengambil data, jumlahnya harus sesuai dengan data yang tersedia.
+
+2. Perbedaan Ketiga Versi
+- Versi 1 – Array Geser
+Di versi pertama, setiap kali kita mengambil data, data yang ada di belakangnya akan digeser satu per satu ke kiri. Jadi, posisi data paling depan selalu ada di indeks 0. Cara ini memang sederhana, tetapi semakin banyak data yang tersisa, semakin banyak juga data yang harus digeser.
+- Versi 2 – Array Pemadatan
+Di versi kedua, data tidak langsung digeser setiap kali diambil. Program hanya memindahkan posisi head ke indeks berikutnya. Data baru akan digeser ke awal array kalau bagian belakang sudah penuh dan masih ada tempat kosong di bagian depan. Jadi, proses pengambilan datanya lebih praktis dibandingkan versi pertama.
+- Versi 3 – Circular Queue
+Di versi ketiga, array dibuat seolah-olah berbentuk lingkaran. Kalau posisi indeks sudah sampai di ujung array, posisi berikutnya bisa kembali lagi ke indeks 0. Jadi, data tidak perlu digeser setiap kali ada data yang masuk atau diambil. Program cukup mengatur posisi head dan jumlah data yang ada.
+- 3. Perbandingan Jumlah Pergeseran
+Dari hasil pengujian utama, versi pertama menghasilkan 9 kali pergeseran. Jumlah ini cukup banyak karena setiap kali mengambil data, data yang tersisa harus digeser ke kiri.
+Di versi kedua, jumlah pergeserannya hanya 4 kali karena data hanya digeser saat bagian belakang array sudah penuh dan perlu menyediakan tempat untuk data baru.
+Sedangkan di versi ketiga, jumlah pergeserannya 0 karena menggunakan sistem melingkar. Jadi, program tidak perlu memindahkan data, cukup mengatur indeksnya saja.
+Dari sini bisa dilihat kalau cara mengatur data di setiap versi ternyata berpengaruh terhadap jumlah pergeserannya.
+
+4. Analisis Kompleksitas Waktu
+Untuk memasukkan satu data, ketiga versi umumnya membutuhkan waktu O(1), karena program hanya perlu menyimpan data dan mengatur posisi indeks.
+Untuk mengambil satu data, versi pertama membutuhkan waktu O(n) karena masih harus menggeser data yang tersisa. Sementara itu, versi kedua dan ketiga membutuhkan waktu O(1) karena hanya mengubah posisi head atau jumlah data.
+Kalau mengambil beberapa data sekaligus sebanyak k, versi pertama membutuhkan waktu lebih banyak karena ada proses pergeseran setiap kali data diambil. Versi kedua dan ketiga membutuhkan waktu O(k) karena program memproses data yang diambil satu per satu.
+
+5. Kesimpulan
+Setelah mencoba ketiga versi, semuanya bisa berjalan sesuai konsep queue, yaitu data yang masuk lebih dulu akan keluar lebih dulu.
+Perbedaannya ada pada cara program mengatur data. Versi pertama harus menggeser data setiap kali ada pengambilan. Versi kedua hanya menggeser data ketika memang diperlukan. Sedangkan versi ketiga tidak perlu menggeser data sama sekali karena menggunakan circular queue.
+Menurut saya, versi ketiga lebih praktis dan efisien karena tidak perlu repot memindahkan data setiap kali ada perubahan pada antrean.
